@@ -1,0 +1,105 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form class="form-container">
+        <div class="select-option">
+          <label for="pool_length">Pool Length</label>
+          <select id="pool_length">
+            <optgroup>
+              <option value="2.0">2.0m</option>
+              <option value="2.2">2.2m</option>
+              <option value="8.2" selected>8.2m</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="select-option">
+          <label for="pool_width">Pool Width</label>
+          <select id="pool_width">
+            <optgroup>
+              <option value="2.0">1.7m</option>
+              <option value="2.2">2.2m</option>
+              <option value="8.2">8.2m</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="select-option">
+          <label for="need_roller">Need a Roller?</label>
+          <select id="need_roller">
+            <optgroup>
+              <option value="yes" selected>Yes</option>
+              <option value="no">No</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="select-option">
+          <label for="side_step">Side Step?</label>
+          <select id="side_step">
+            <optgroup>
+              <option value="yes" selected>Yes</option>
+              <option value="no">No</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="select-option">
+          <label for="side_step_orientation">Side Step Orientation</label>
+          <select id="side_step_orientation">
+            <optgroup>
+              <option value="none">n/a</option>
+              <option value="left" selected>Left Hand Side</option>
+              <option value="right">Right Hand Side</option>
+              <option value="centre">Centre</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="select-option">
+          <label for="show_roller">Show Roller?</label>
+          <select id="show_roller">
+            <optgroup>
+              <option value="left" selected>Left Side</option>
+              <option value="right">Right Side</option>
+              <option value="centre">Hide Roller</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="select-option">
+          <label for="step_length">Step Length</label>
+          <select id="step_length">
+            <optgroup>
+              <option value="1.0">1.0m</option>
+              <option value="1.1">1.1m</option>
+              <option value="4.2" selected>4.2m</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="select-option">
+          <label for="step_width">Step Width</label>
+          <select id="step_width">
+            <optgroup>
+              <option value="0.4">0.4m</option>
+              <option value="0.5">0.5m</option>
+              <option value="1.0" selected>1.0m</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="select-option">
+          <label for="step_width">Offset</label>
+          <select id="step_width">
+            <optgroup>
+              <option value="none" selected>n/a</option>
+              <option value="1.0">1.0m</option>
+              <option value="1.1">1.1m</option>
+            </optgroup>
+          </select>
+        </div>
+      </form>
+
+      <div class="pool-container"></div>
+    </div>
+  </body>
+</html>
