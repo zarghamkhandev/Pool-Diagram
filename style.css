@@ -41,19 +41,23 @@
 .pool-container {
   background-color: #ccc;
   width: 400px;
-  height: 300px;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.pool-container #side-step {
+  background-color: black;
 }
 
 .pool-container #main-pool {
-  padding-bottom: 100%;
   width: 100%;
   background: red;
+  display: inline-block;
 }
 /*# sourceMappingURL=style.css.map */

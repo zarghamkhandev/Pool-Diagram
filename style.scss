@@ -1,4 +1,4 @@
-$pool-length: 400px;
+$pool-container: 400px;
 
 *,
 ::before,
@@ -28,14 +28,17 @@ $pool-length: 400px;
 
 .pool-container {
   background-color: #ccc;
-  width: $pool-length;
-  height: 300px;
+  width: $pool-container;
+
   padding: 10px;
   display: flex;
-  align-items: center;
-
+  flex-direction: column;
+  #side-step {
+    background-color: black;
+  }
   #main-pool {
     width: 100%;
     background: red;
+    display: inline-block;
   }
 }
