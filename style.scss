@@ -1,3 +1,13 @@
+$pool-length: 400px;
+
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
   justify-content: space-around;
@@ -17,7 +27,15 @@
 }
 
 .pool-container {
-  background-color: red;
-  width: 400px;
+  background-color: #ccc;
+  width: $pool-length;
   height: 300px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+
+  #main-pool {
+    width: 100%;
+    background: red;
+  }
 }

@@ -3,14 +3,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+
     <title>Document</title>
   </head>
   <body>
     <div class="container">
-      <form class="form-container">
+      <form class="form-container" name="form">
         <div class="select-option">
-          <label for="pool_length">Pool Length</label>
-          <select id="pool_length">
+          <label for="pool-length">Pool Length</label>
+          <select id="pool-length">
             <optgroup>
               <option value="2.0">2.0m</option>
               <option value="2.2">2.2m</option>
@@ -24,6 +25,7 @@
             <optgroup>
               <option value="2.0">1.7m</option>
               <option value="2.2">2.2m</option>
+              <option value="6.0" selected>6.0m</option>
               <option value="8.2">8.2m</option>
             </optgroup>
           </select>
@@ -78,8 +80,8 @@
           </select>
         </div>
         <div class="select-option">
-          <label for="step_width">Step Width</label>
-          <select id="step_width">
+          <label for="step-width">Step Width</label>
+          <select id="step-width">
             <optgroup>
               <option value="0.4">0.4m</option>
               <option value="0.5">0.5m</option>
@@ -88,8 +90,8 @@
           </select>
         </div>
         <div class="select-option">
-          <label for="step_width">Offset</label>
-          <select id="step_width">
+          <label for="step-offset">Offset</label>
+          <select id="step-offset">
             <optgroup>
               <option value="none" selected>n/a</option>
               <option value="1.0">1.0m</option>
@@ -99,7 +101,10 @@
         </div>
       </form>
 
-      <div class="pool-container"></div>
+      <div class="pool-container">
+        <div id="main-pool"></div>
+      </div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>
