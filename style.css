@@ -38,10 +38,21 @@
   margin: 10px;
 }
 
-.pool-container {
-  background-color: #ccc;
+#diagram-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: yellow;
   width: 400px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 10px;
+}
+
+#diagram-container #pool-container {
+  background-color: #ccc;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,13 +62,20 @@
           flex-direction: column;
 }
 
-.pool-container #side-step {
+#diagram-container #pool-container #side-step {
   background-color: black;
 }
 
-.pool-container #main-pool {
+#diagram-container #pool-container #main-pool {
   width: 100%;
   background: red;
   display: inline-block;
+}
+
+#diagram-container #roller {
+  width: 20px;
+  height: 300px;
+  background: blue;
+  margin-left: 10px;
 }
 /*# sourceMappingURL=style.css.map */

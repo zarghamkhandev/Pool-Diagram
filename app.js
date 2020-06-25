@@ -2,6 +2,8 @@
 const mainPool = document.querySelector("#main-pool");
 // select step shape
 const sideStep = document.querySelector("#side-step");
+// select roller shape
+const roller = document.querySelector("#roller");
 // select pool's length and width
 const poolLengthSelector = document.getElementById("pool-length");
 const poolWidthSelector = document.getElementById("pool-width");
@@ -17,6 +19,8 @@ const sideStepVisibilitySelector = document.getElementById(
 const sideStepOrientationSelector = document.getElementById(
   "side-step-orientation"
 );
+// select roller needed selector
+const rollerNeededSelector = document.getElementById("need-roller");
 
 // get default values from selectors
 let poolLength =
@@ -33,23 +37,24 @@ let sideStepVisibility =
 let sideStepOrientation =
   sideStepOrientationSelector.options[sideStepOrientationSelector.selectedIndex]
     .value;
-
-// get pools width in pixels from dom and find scale factor
-const poolLengthInPixel = mainPool.clientWidth;
-const scaleFactor = poolLengthInPixel / poolLength;
+let rollerNeeded =
+  rollerNeededSelector.options[rollerNeededSelector.selectedIndex].value;
 
 const render = () => {
-  // set pool's width
-  const poolRatio = ((poolWidth / poolLength) * 100).toFixed();
-  mainPool.style.paddingBottom = `${poolRatio}%`;
-
+  // get pools width in pixels from dom and find scale factor
+  const poolLengthInPixel = mainPool.getBoundingClientRect().width;
+  const scaleFactor = poolLengthInPixel / poolLength;
+  // set pool's length and width
+  mainPool.style.height = `${poolWidth * scaleFactor}px`;
+  // set step length and width
+  sideStep.style.width = `${stepLength * scaleFactor}`;
+  sideStep.style.height = `${stepWidth * scaleFactor}`;
   // set visibility of side step
   if (sideStepVisibility === "no") {
     sideStep.style.display = "none";
   } else if (sideStepVisibility === "yes") {
     sideStep.style.display = "block";
   }
-
   // set sidestep orientation
   if (sideStepOrientation === "right") {
     sideStep.style.alignSelf = "flex-end";
@@ -58,10 +63,12 @@ const render = () => {
   } else if (sideStepOrientation === "centre") {
     sideStep.style.alignSelf = "center";
   }
-
-  // set step length and width
-  sideStep.style.width = `${stepLength * scaleFactor}`;
-  sideStep.style.height = `${stepWidth * scaleFactor}`;
+  // set roller needed value
+  if (rollerNeeded === "yes") {
+    roller.style.display = "block";
+  } else if (rollerNeeded === "no") {
+    roller.style.display = "none";
+  }
 };
 
 render();
@@ -89,5 +96,9 @@ stepWidthSelector.addEventListener("change", (event) => {
 });
 sideStepOrientationSelector.addEventListener("change", (event) => {
   sideStepOrientation = event.target.value;
+  render();
+});
+rollerNeededSelector.addEventListener("change", (event) => {
+  rollerNeeded = event.target.value;
   render();
 });
