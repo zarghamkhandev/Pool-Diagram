@@ -50,7 +50,7 @@ body {
   display: flex;
   background-color: yellow;
   width: $pool-container;
-  align-items: center;
+  align-items: flex-end;
   padding: 10px 5px 10px 5px;
   #pool-container {
     width: 100%;
@@ -68,7 +68,7 @@ body {
   }
   #roller {
     width: 20px;
-    height: 300px;
+
     background: blue;
     margin: 0 5px 0 5px;
   }

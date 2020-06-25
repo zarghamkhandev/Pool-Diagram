@@ -81,6 +81,24 @@ const render = () => {
     diagramContainer.style.flexDirection = "row-reverse";
   } else if (rollerVisibility === "right") {
     diagramContainer.style.flexDirection = "row";
+  } else if (rollerVisibility === "hidden") {
+    roller.style.display = "none";
+  }
+  // set height of roller
+  if (
+    (rollerVisibility === "right" && sideStepOrientation !== "right") ||
+    (rollerVisibility === "left" && sideStepOrientation !== "left")
+  ) {
+    roller.style.height = `${(parseInt(poolWidth) + 0.3) * scaleFactor}px`;
+    roller.style.marginBottom = `${-(0.3 * scaleFactor) / 2}px`;
+  } else if (
+    (rollerVisibility === "right" && sideStepOrientation === "right") ||
+    (rollerVisibility === "left" && sideStepOrientation === "left")
+  ) {
+    roller.style.height = `${
+      (parseInt(poolWidth) + parseInt(stepWidth) + 0.3) * scaleFactor
+    }px`;
+    roller.style.marginBottom = `${-(0.3 * scaleFactor) / 2}px`;
   }
 };
 

@@ -70,9 +70,9 @@ body {
   display: flex;
   background-color: yellow;
   width: 400px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   padding: 10px 5px 10px 5px;
 }
 
@@ -100,7 +100,6 @@ body {
 
 #diagram-container #roller {
   width: 20px;
-  height: 300px;
   background: blue;
   margin: 0 5px 0 5px;
 }
