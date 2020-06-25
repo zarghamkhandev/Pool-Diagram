@@ -1,3 +1,5 @@
+// select main diagram container
+const diagramContainer = document.getElementById("diagram-container");
 // select main pool shape
 const mainPool = document.querySelector("#main-pool");
 // select step shape
@@ -21,6 +23,8 @@ const sideStepOrientationSelector = document.getElementById(
 );
 // select roller needed selector
 const rollerNeededSelector = document.getElementById("need-roller");
+// select roller visibility selector
+const rollerVisibilitySelector = document.getElementById("show-roller");
 
 // get default values from selectors
 let poolLength =
@@ -39,6 +43,9 @@ let sideStepOrientation =
     .value;
 let rollerNeeded =
   rollerNeededSelector.options[rollerNeededSelector.selectedIndex].value;
+let rollerVisibility =
+  rollerVisibilitySelector.options[rollerVisibilitySelector.selectedIndex]
+    .value;
 
 const render = () => {
   // get pools width in pixels from dom and find scale factor
@@ -68,6 +75,12 @@ const render = () => {
     roller.style.display = "block";
   } else if (rollerNeeded === "no") {
     roller.style.display = "none";
+  }
+  // set roller visibility
+  if (rollerVisibility === "left") {
+    diagramContainer.style.flexDirection = "row-reverse";
+  } else if (rollerVisibility === "right") {
+    diagramContainer.style.flexDirection = "row";
   }
 };
 
@@ -100,5 +113,9 @@ sideStepOrientationSelector.addEventListener("change", (event) => {
 });
 rollerNeededSelector.addEventListener("change", (event) => {
   rollerNeeded = event.target.value;
+  render();
+});
+rollerVisibilitySelector.addEventListener("change", (event) => {
+  rollerVisibility = event.target.value;
   render();
 });
