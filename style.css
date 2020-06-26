@@ -89,14 +89,31 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-filter: drop-shadow(0px calc(2px * (-1)) 0px #5a95b4) drop-shadow(0px 2px 0px #5a95b4) drop-shadow(calc(2px * (-1)) 0px 0px #5a95b4) drop-shadow(2px 0px 0px #5a95b4);
-          filter: drop-shadow(0px calc(2px * (-1)) 0px #5a95b4) drop-shadow(0px 2px 0px #5a95b4) drop-shadow(calc(2px * (-1)) 0px 0px #5a95b4) drop-shadow(2px 0px 0px #5a95b4);
+  -webkit-filter: url("#goo") drop-shadow(0px calc(2px * (-1)) 0px #5a95b4) drop-shadow(0px 2px 0px #5a95b4) drop-shadow(calc(2px * (-1)) 0px 0px #5a95b4) drop-shadow(2px 0px 0px #5a95b4);
+          filter: url("#goo") drop-shadow(0px calc(2px * (-1)) 0px #5a95b4) drop-shadow(0px 2px 0px #5a95b4) drop-shadow(calc(2px * (-1)) 0px 0px #5a95b4) drop-shadow(2px 0px 0px #5a95b4);
   position: relative;
 }
 
 #diagram-container #pool-container #main-pool {
   width: 100%;
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#diagram-container #pool-container #main-pool p {
+  color: #5a95b4;
+  position: relative;
+  font-weight: bold;
+  font-size: 18;
+  width: 100%;
+  text-align: center;
 }
 
 #diagram-container #pool-container #side-step,
