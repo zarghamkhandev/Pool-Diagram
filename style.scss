@@ -1,4 +1,7 @@
 $pool-container: 400px;
+$border-color: #5a95b4;
+$border-width: 2px;
+$pool-color: linear-gradient(120deg, #6dcdeb 0%, #7cc0eb 100%);
 
 *,
 ::before,
@@ -48,7 +51,8 @@ body {
 
 #diagram-container {
   display: flex;
-  background-color: yellow;
+  width: max-content;
+  background: #ccc;
   width: $pool-container;
   align-items: flex-end;
   padding: 10px 5px 10px 5px;
@@ -57,13 +61,31 @@ body {
     margin: 0 5px 0 5px;
     display: flex;
     flex-direction: column;
+    filter: drop-shadow(0px calc(#{$border-width} * (-1)) 0px $border-color)
+      drop-shadow(0px $border-width 0px $border-color)
+      drop-shadow(calc(#{$border-width} * (-1)) 0px 0px $border-color)
+      drop-shadow($border-width 0px 0px $border-color);
+    position: relative;
     #side-step {
-      background-color: red;
     }
     #main-pool {
       width: 100%;
-      background: red;
       display: inline-block;
+    }
+    #side-step,
+    #main-pool {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    #side-step::before,
+    #main-pool::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: $pool-color;
     }
   }
   #roller {

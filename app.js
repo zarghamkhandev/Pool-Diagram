@@ -27,25 +27,16 @@ const rollerNeededSelector = document.getElementById("need-roller");
 const rollerVisibilitySelector = document.getElementById("show-roller");
 
 // get default values from selectors
-let poolLength =
-  poolLengthSelector.options[poolLengthSelector.selectedIndex].value;
-let poolWidth =
-  poolWidthSelector.options[poolWidthSelector.selectedIndex].value;
-let stepLength =
-  stepLengthSelector.options[stepLengthSelector.selectedIndex].value;
-let stepWidth =
-  stepWidthSelector.options[stepWidthSelector.selectedIndex].value;
-let sideStepVisibility =
-  sideStepVisibilitySelector.options[sideStepVisibilitySelector.selectedIndex]
-    .value;
-let sideStepOrientation =
-  sideStepOrientationSelector.options[sideStepOrientationSelector.selectedIndex]
-    .value;
-let rollerNeeded =
-  rollerNeededSelector.options[rollerNeededSelector.selectedIndex].value;
-let rollerVisibility =
-  rollerVisibilitySelector.options[rollerVisibilitySelector.selectedIndex]
-    .value;
+const defaultValue = (selector) =>
+  selector.options[selector.selectedIndex].value;
+let poolLength = defaultValue(poolLengthSelector);
+let poolWidth = defaultValue(poolWidthSelector);
+let stepLength = defaultValue(stepLengthSelector);
+let stepWidth = defaultValue(stepWidthSelector);
+let sideStepVisibility = defaultValue(sideStepVisibilitySelector);
+let sideStepOrientation = defaultValue(sideStepOrientationSelector);
+let rollerNeeded = defaultValue(rollerNeededSelector);
+let rollerVisibility = defaultValue(rollerVisibilitySelector);
 
 const render = () => {
   // get pools width in pixels from dom and find scale factor
