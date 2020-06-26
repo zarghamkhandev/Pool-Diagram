@@ -6,6 +6,7 @@ const mainPool = document.querySelector("#main-pool");
 const sideStep = document.querySelector("#side-step");
 // select roller shape
 const roller = document.querySelector("#roller");
+const rollerSvg = document.querySelector("#roller-svg");
 // select pool's length and width
 const poolLengthSelector = document.getElementById("pool-length");
 const poolWidthSelector = document.getElementById("pool-width");
@@ -25,7 +26,10 @@ const sideStepOrientationSelector = document.getElementById(
 const rollerNeededSelector = document.getElementById("need-roller");
 // select roller visibility selector
 const rollerVisibilitySelector = document.getElementById("show-roller");
-
+// roller horizontal distance
+const rollerHorizontalDistance = getComputedStyle(
+  document.body
+).getPropertyValue("--roller-horizontal-distance");
 // get default values from selectors
 const defaultValue = (selector) =>
   selector.options[selector.selectedIndex].value;
@@ -75,6 +79,9 @@ const render = () => {
   } else if (rollerVisibility === "hidden") {
     roller.style.display = "none";
   }
+  // re render roller
+  roller.innerHTML = "";
+  roller.appendChild(rollerSvg);
   // set height of roller
   if (
     (rollerVisibility === "right" && sideStepOrientation !== "right") ||
@@ -90,6 +97,14 @@ const render = () => {
       (parseInt(poolWidth) + parseInt(stepWidth) + 0.3) * scaleFactor
     }px`;
     roller.style.marginBottom = `${-(0.3 * scaleFactor) / 2}px`;
+  }
+  // add margin to roller
+  if (rollerVisibility === "right") {
+    roller.style.marginLeft = rollerHorizontalDistance;
+    roller.style.marginRight = "0px";
+  } else if (rollerVisibility === "left") {
+    roller.style.marginRight = rollerHorizontalDistance;
+    roller.style.marginLeft = "0px";
   }
 };
 

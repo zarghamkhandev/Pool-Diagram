@@ -1,3 +1,7 @@
+:root {
+  --roller-horizontal-distance: 50px;
+}
+
 *,
 ::before,
 ::after {
@@ -71,17 +75,21 @@ body {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  background: #ccc;
   width: 400px;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  padding: 10px 5px 10px 5px;
+  background: yellow;
 }
 
-#diagram-container #pool-container {
+#diagram-container #extra-container {
   width: 100%;
-  margin: 0 5px 0 5px;
+  -webkit-filter: drop-shadow(0px calc(2px * (-1)) 0px #5196bb) drop-shadow(0px 2px 0px #5196bb) drop-shadow(calc(2px * (-1)) 0px 0px #5196bb) drop-shadow(2px 0px 0px #5196bb);
+          filter: drop-shadow(0px calc(2px * (-1)) 0px #5196bb) drop-shadow(0px 2px 0px #5196bb) drop-shadow(calc(2px * (-1)) 0px 0px #5196bb) drop-shadow(2px 0px 0px #5196bb);
+}
+
+#diagram-container #extra-container #pool-container {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,12 +97,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-filter: url("#goo") drop-shadow(0px calc(2px * (-1)) 0px #5a95b4) drop-shadow(0px 2px 0px #5a95b4) drop-shadow(calc(2px * (-1)) 0px 0px #5a95b4) drop-shadow(2px 0px 0px #5a95b4);
-          filter: url("#goo") drop-shadow(0px calc(2px * (-1)) 0px #5a95b4) drop-shadow(0px 2px 0px #5a95b4) drop-shadow(calc(2px * (-1)) 0px 0px #5a95b4) drop-shadow(2px 0px 0px #5a95b4);
+  -webkit-filter: url("#goo");
+          filter: url("#goo");
   position: relative;
 }
 
-#diagram-container #pool-container #main-pool {
+#diagram-container #extra-container #pool-container #main-pool {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,8 +115,8 @@ body {
           justify-content: center;
 }
 
-#diagram-container #pool-container #main-pool p {
-  color: #5a95b4;
+#diagram-container #extra-container #pool-container #main-pool p {
+  color: #5196bb;
   position: relative;
   font-weight: bold;
   font-size: 18;
@@ -116,14 +124,14 @@ body {
   text-align: center;
 }
 
-#diagram-container #pool-container #side-step,
-#diagram-container #pool-container #main-pool {
+#diagram-container #extra-container #pool-container #side-step,
+#diagram-container #extra-container #pool-container #main-pool {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-#diagram-container #pool-container #side-step::before,
-#diagram-container #pool-container #main-pool::before {
+#diagram-container #extra-container #pool-container #side-step::before,
+#diagram-container #extra-container #pool-container #main-pool::before {
   content: "";
   position: absolute;
   top: 0;
@@ -133,9 +141,11 @@ body {
   background: linear-gradient(120deg, #6dcdeb 0%, #7cc0eb 100%);
 }
 
-#diagram-container #roller {
-  width: 20px;
-  background: blue;
-  margin: 0 5px 0 5px;
+#diagram-container #roller #rod {
+  height: calc(100% - 18px);
+}
+
+#diagram-container #roller #end2 {
+  y: calc(100% - 8px);
 }
 /*# sourceMappingURL=style.css.map */

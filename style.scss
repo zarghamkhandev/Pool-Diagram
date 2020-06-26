@@ -1,9 +1,13 @@
 $pool-container: 400px;
-$border-color: #5a95b4;
+$border-color: #5196bb;
 $border-width: 2px;
 $pool-color: linear-gradient(120deg, #6dcdeb 0%, #7cc0eb 100%);
 $lines-color: #236c93;
+$roller-horizontal-distance: 50px;
 
+:root {
+  --roller-horizontal-distance: #{$roller-horizontal-distance};
+}
 *,
 ::before,
 ::after {
@@ -30,7 +34,6 @@ body {
     display: flex;
     flex-direction: column;
     margin: 10px;
-
     color: #777777;
     select {
       height: 35px;
@@ -53,56 +56,63 @@ body {
 #diagram-container {
   display: flex;
   width: max-content;
-  background: #ccc;
   width: $pool-container;
   align-items: flex-end;
-  padding: 10px 5px 10px 5px;
-  #pool-container {
+  background: yellow;
+
+  #extra-container {
     width: 100%;
-    margin: 0 5px 0 5px;
-    display: flex;
-    flex-direction: column;
-    filter: url("#goo")
-      drop-shadow(0px calc(#{$border-width} * (-1)) 0px $border-color)
+    filter: drop-shadow(0px calc(#{$border-width} * (-1)) 0px #{$border-color})
       drop-shadow(0px $border-width 0px $border-color)
       drop-shadow(calc(#{$border-width} * (-1)) 0px 0px $border-color)
       drop-shadow($border-width 0px 0px $border-color);
-    position: relative;
-    #side-step {
-    }
-    #main-pool {
+    #pool-container {
       width: 100%;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      p {
-        color: $border-color;
-        position: relative;
-        font-weight: bold;
-        font-size: 18;
+      flex-direction: column;
+      filter: url("#goo");
 
+      position: relative;
+
+      #side-step {
+      }
+      #main-pool {
         width: 100%;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p {
+          color: $border-color;
+          position: relative;
+          font-weight: bold;
+          font-size: 18;
+          width: 100%;
+          text-align: center;
+        }
+      }
+      #side-step,
+      #main-pool {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+      #side-step::before,
+      #main-pool::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $pool-color;
       }
     }
-    #side-step,
-    #main-pool {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    #side-step::before,
-    #main-pool::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: $pool-color;
-    }
   }
+
   #roller {
-    width: 20px;
-    background: blue;
-    margin: 0 5px 0 5px;
+    #rod {
+      height: calc(100% - 18px);
+    }
+    #end2 {
+      y: calc(100% - 8px);
+    }
   }
 }

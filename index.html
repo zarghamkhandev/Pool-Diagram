@@ -23,98 +23,125 @@
         <div class="select-option">
           <label for="pool-width">Pool Width</label>
           <select id="pool-width">
-              <option value="3.0">3.0m</option>
-              <option value="4.0">4.0m</option>
-              <option value="5.0">5.0m</option>
-              <option value="6.0" selected>6.0m</option>
+            <option value="3.0">3.0m</option>
+            <option value="4.0">4.0m</option>
+            <option value="5.0">5.0m</option>
+            <option value="6.0" selected>6.0m</option>
           </select>
         </div>
         <div class="select-option">
           <label for="need-roller">Need a Roller?</label>
           <select id="need-roller">
-              <option value="yes" selected>Yes</option>
-              <option value="no">No</option>
-            </optgroup>
+            <option value="yes" selected>Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
         <div class="select-option">
           <label for="side-step-visibility">Side Step?</label>
           <select id="side-step-visibility">
-              <option value="yes" selected>Yes</option>
-              <option value="no">No</option>
-            </optgroup>
+            <option value="yes" selected>Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
         <div class="select-option">
           <label for="side-step-orientation">Side Step Orientation</label>
           <select id="side-step-orientation">
-              <option value="none">n/a</option>
-              <option value="left" selected>Left Hand Side</option>
-              <option value="right" >Right Hand Side</option>
-              <option value="centre">Centre</option>
-            </optgroup>
+            <option value="none">n/a</option>
+            <option value="left" selected>Left Hand Side</option>
+            <option value="right">Right Hand Side</option>
+            <option value="centre">Centre</option>
           </select>
         </div>
         <div class="select-option">
           <label for="show-roller">Show Roller?</label>
           <select id="show-roller">
-              <option value="left" >Left Side</option>
-              <option value="right" selected>Right Side</option>
-              <option value="hidden">Hide Roller</option>
-            </optgroup>
+            <option value="left">Left Side</option>
+            <option value="right" selected>Right Side</option>
+            <option value="hidden">Hide Roller</option>
           </select>
         </div>
         <div class="select-option">
           <label for="step-length">Step Length</label>
           <select id="step-length">
-              <option value="2.0">2.0m</option>
-              <option value="3.0">3.0m</option>
-              <option value="4.0" selected>4.0m</option>
-            </optgroup>
+            <option value="2.0" selected>2.0m</option>
+            <option value="3.0">3.0m</option>
+            <option value="4.0">4.0m</option>
           </select>
         </div>
         <div class="select-option">
           <label for="step-width">Step Width</label>
           <select id="step-width">
-              <option value="1.0">1.0m</option>
-              <option value="2.0">2.0m</option>
-              <option value="3.0" selected>3.0m</option>
-            </optgroup>
+            <option value="1.0" selected>1.0m</option>
+            <option value="2.0">2.0m</option>
+            <option value="3.0">3.0m</option>
           </select>
         </div>
         <div class="select-option">
           <label for="step-offset">Offset</label>
           <select id="step-offset">
-              <option value="none" selected>n/a</option>
-              <option value="1.0">1.0m</option>
-              <option value="1.1">1.1m</option>
-            </optgroup>
+            <option value="none" selected>n/a</option>
+            <option value="1.0">1.0m</option>
+            <option value="1.1">1.1m</option>
           </select>
         </div>
       </form>
       <div id="diagram-container">
-        <div id="pool-container">
-          <div id="side-step"></div>
-          <div id="main-pool">
-            <p>Pool Cover <br/>to be Delivered</p>
+        <div id="extra-container">
+          <div id="pool-container">
+            <div id="side-step"></div>
+            <div id="main-pool">
+              <p>Pool Cover <br />to be Delivered</p>
+            </div>
           </div>
-        
         </div>
-        <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <svg
+          style="visibility: hidden; position: absolute;"
+          width="0"
+          height="0"
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+        >
           <defs>
-              <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />    
-                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-                  <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-              </filter>
+            <filter id="goo">
+              <feGaussianBlur
+                in="SourceGraphic"
+                stdDeviation="2"
+                result="blur"
+              />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                result="goo"
+              />
+              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
           </defs>
-      </svg>
-        
+        </svg>
+
         <div id="roller">
-         
+          <svg height="100%" width="36" id="roller-svg">
+            <defs>
+              <linearGradient id="Gradient1">
+                <stop offset="0%" stop-color="silver" />
+                <stop offset="50%" stop-color="#fff" />
+                <stop offset="100%" stop-color="silver" />
+              </linearGradient>
+            </defs>
+            <rect
+              width="36"
+              height="8"
+              fill="#5a95b4"
+              x="0"
+              y="0"
+              id="end1"
+              rx="4"
+            />
+            <rect width="12" fill="url(#Gradient1" id="rod" x="13" y="9" />
+            <rect width="36" height="8" fill="#5a95b4" x="0" id="end2" rx="4" />
+          </svg>
         </div>
-        
       </div>
-      
     </div>
     <script src="app.js"></script>
   </body>
