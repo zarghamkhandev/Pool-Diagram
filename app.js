@@ -30,6 +30,11 @@ const rollerVisibilitySelector = document.getElementById("show-roller");
 const rollerHorizontalDistance = getComputedStyle(
   document.body
 ).getPropertyValue("--roller-horizontal-distance");
+// select left dimension
+const leftDimension = document.getElementById("left-dimension");
+// select right dimension
+const rightDimension = document.getElementById("right-dimension");
+//
 // get default values from selectors
 const defaultValue = (selector) =>
   selector.options[selector.selectedIndex].value;
@@ -57,9 +62,10 @@ const render = () => {
   } else if (sideStepVisibility === "yes") {
     sideStep.style.display = "block";
   }
-  // set sidestep orientation
+  // set sidestep orientation and dimensions height
   if (sideStepOrientation === "right") {
     sideStep.style.alignSelf = "flex-end";
+    console.log(leftDimension.clientHeight);
   } else if (sideStepOrientation === "left") {
     sideStep.style.alignSelf = "flex-start";
   } else if (sideStepOrientation === "centre") {
@@ -88,7 +94,6 @@ const render = () => {
     (rollerVisibility === "left" && sideStepOrientation !== "left")
   ) {
     roller.style.height = `${(parseInt(poolWidth) + 0.3) * scaleFactor}px`;
-    roller.style.marginBottom = `${-(0.3 * scaleFactor) / 2}px`;
   } else if (
     (rollerVisibility === "right" && sideStepOrientation === "right") ||
     (rollerVisibility === "left" && sideStepOrientation === "left")
@@ -96,7 +101,6 @@ const render = () => {
     roller.style.height = `${
       (parseInt(poolWidth) + parseInt(stepWidth) + 0.3) * scaleFactor
     }px`;
-    roller.style.marginBottom = `${-(0.3 * scaleFactor) / 2}px`;
   }
   // add margin to roller
   if (rollerVisibility === "right") {

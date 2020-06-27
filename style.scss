@@ -4,6 +4,8 @@ $border-width: 2px;
 $pool-color: linear-gradient(120deg, #6dcdeb 0%, #7cc0eb 100%);
 $lines-color: #236c93;
 $roller-horizontal-distance: 50px;
+$dimension-block-width: 13px;
+$diemsnion-block-offset: 10px;
 
 :root {
   --roller-horizontal-distance: #{$roller-horizontal-distance};
@@ -59,55 +61,86 @@ body {
   width: $pool-container;
   align-items: flex-end;
   background: yellow;
-
-  #extra-container {
+  #overall-container {
+    display: grid;
+    grid-template-columns:
+      calc(#{$dimension-block-width} + #{$diemsnion-block-offset})
+      auto calc(#{$dimension-block-width} + #{$diemsnion-block-offset});
+    grid-template-rows: auto calc(
+        #{$dimension-block-width} + #{$diemsnion-block-offset}
+      );
+    grid-template-areas:
+      "left-dimension pool-container right-dimension"
+      ". bottom-dimension .";
+    #left-dimension {
+      width: $dimension-block-width;
+      grid-area: left-dimension;
+      background-color: red;
+    }
     width: 100%;
-    filter: drop-shadow(0px calc(#{$border-width} * (-1)) 0px #{$border-color})
-      drop-shadow(0px $border-width 0px $border-color)
-      drop-shadow(calc(#{$border-width} * (-1)) 0px 0px $border-color)
-      drop-shadow($border-width 0px 0px $border-color);
     #pool-container {
+      grid-area: pool-container;
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      filter: url("#goo");
-
-      position: relative;
-
-      #side-step {
-      }
-      #main-pool {
+      filter: drop-shadow(
+          0px calc(#{$border-width} * (-1)) 0px #{$border-color}
+        )
+        drop-shadow(0px $border-width 0px $border-color)
+        drop-shadow(calc(#{$border-width} * (-1)) 0px 0px $border-color)
+        drop-shadow($border-width 0px 0px $border-color);
+      #extra-container {
         width: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        p {
-          color: $border-color;
-          position: relative;
-          font-weight: bold;
-          font-size: 18;
+        flex-direction: column;
+        filter: url("#goo");
+        position: relative;
+        #main-pool {
           width: 100%;
-          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          p {
+            color: $border-color;
+            position: relative;
+            font-weight: bold;
+            font-size: 18;
+            width: 100%;
+            text-align: center;
+          }
+        }
+        #side-step,
+        #main-pool {
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        #side-step::before,
+        #main-pool::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: $pool-color;
         }
       }
-      #side-step,
-      #main-pool {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      }
-      #side-step::before,
-      #main-pool::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: $pool-color;
-      }
+    }
+    #right-dimension {
+      grid-area: right-dimension;
+      height: 100%;
+      width: $dimension-block-width;
+      margin-left: auto;
+      background-color: red;
+    }
+    #bottom-dimension {
+      grid-area: bottom-dimension;
+      width: 100%;
+      height: $dimension-block-width;
+      margin-top: auto;
+      background-color: blue;
     }
   }
 
   #roller {
+    margin-bottom: 14px;
     #rod {
       height: calc(100% - 18px);
     }

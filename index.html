@@ -86,38 +86,43 @@
         </div>
       </form>
       <div id="diagram-container">
-        <div id="extra-container">
+        <div id="overall-container">
+          <div id="left-dimension"></div>
           <div id="pool-container">
-            <div id="side-step"></div>
-            <div id="main-pool">
-              <p>Pool Cover <br />to be Delivered</p>
+            <div id="extra-container">
+              <div id="side-step"></div>
+              <div id="main-pool">
+                <p>Pool Cover <br />to be Delivered</p>
+              </div>
             </div>
+            <svg
+              style="visibility: hidden; position: absolute;"
+              width="0"
+              height="0"
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+            >
+              <defs>
+                <filter id="goo">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="2"
+                    result="blur"
+                  />
+                  <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                    result="goo"
+                  />
+                  <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                </filter>
+              </defs>
+            </svg>
           </div>
+          <div id="right-dimension"></div>
+          <div id="bottom-dimension"></div>
         </div>
-        <svg
-          style="visibility: hidden; position: absolute;"
-          width="0"
-          height="0"
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
-        >
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur
-                in="SourceGraphic"
-                stdDeviation="2"
-                result="blur"
-              />
-              <feColorMatrix
-                in="blur"
-                mode="matrix"
-                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                result="goo"
-              />
-              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-            </filter>
-          </defs>
-        </svg>
 
         <div id="roller">
           <svg height="100%" width="36" id="roller-svg">
