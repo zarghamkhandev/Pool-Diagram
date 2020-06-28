@@ -66,12 +66,20 @@ body {
     grid-template-columns:
       calc(#{$dimension-block-width} + #{$diemsnion-block-offset})
       auto calc(#{$dimension-block-width} + #{$diemsnion-block-offset});
-    grid-template-rows: auto calc(
-        #{$dimension-block-width} + #{$diemsnion-block-offset}
-      );
+    grid-template-rows:
+      calc(#{$dimension-block-width} + #{$diemsnion-block-offset})
+      auto calc(#{$dimension-block-width} + #{$diemsnion-block-offset});
     grid-template-areas:
+      ". top-dimension ."
       "left-dimension pool-container right-dimension"
       ". bottom-dimension .";
+    #top-dimension {
+      grid-area: top-dimension;
+      height: $dimension-block-width;
+      background-color: red;
+      display: flex;
+      width: 100%;
+    }
     #left-dimension {
       width: $dimension-block-width;
       grid-area: left-dimension;

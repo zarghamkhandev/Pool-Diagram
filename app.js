@@ -34,6 +34,8 @@ const rollerHorizontalDistance = getComputedStyle(
 const leftDimension = document.getElementById("left-dimension");
 // select right dimension
 const rightDimension = document.getElementById("right-dimension");
+// select top dimension
+const topDimension = document.getElementById("top-dimension");
 //
 // get default values from selectors
 const defaultValue = (selector) =>
@@ -64,21 +66,24 @@ const render = () => {
     leftDimension.style.height = `${poolWidth * scaleFactor}px`;
   } else if (sideStepVisibility === "yes") {
     sideStep.style.display = "block";
+    topDimension.style.width = `${stepLength * scaleFactor}px`;
   }
-  // set sidestep orientation and dimensions height
+  // set sidestep orientation and dimensions
   if (sideStepOrientation === "right" && sideStepVisibility === "yes") {
     sideStep.style.alignSelf = "flex-end";
     leftDimension.style.height = `${poolWidth * scaleFactor}px`;
-    console.log(typeof stepWidth);
     rightDimension.style.height = `${(poolWidth + stepWidth) * scaleFactor}px`;
+    topDimension.style.justifySelf = "flex-end";
   } else if (sideStepOrientation === "left" && sideStepVisibility === "yes") {
     sideStep.style.alignSelf = "flex-start";
     rightDimension.style.height = `${poolWidth * scaleFactor}px`;
     leftDimension.style.height = `${(poolWidth + stepWidth) * scaleFactor}px`;
+    topDimension.style.justifySelf = "flex-start";
   } else if (sideStepOrientation === "centre" && sideStepVisibility === "yes") {
     sideStep.style.alignSelf = "center";
     rightDimension.style.height = `${poolWidth * scaleFactor}px`;
     leftDimension.style.height = `${poolWidth * scaleFactor}px`;
+    topDimension.style.justifySelf = "center";
   }
   // set roller needed value
   if (rollerNeeded === "yes") {

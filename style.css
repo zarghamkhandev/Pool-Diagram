@@ -87,15 +87,27 @@ body {
   display: grid;
   -ms-grid-columns: calc(13px + 10px) auto calc(13px + 10px);
       grid-template-columns: calc(13px + 10px) auto calc(13px + 10px);
-  -ms-grid-rows: auto calc( 13px + 10px);
-      grid-template-rows: auto calc( 13px + 10px);
-      grid-template-areas: "left-dimension pool-container right-dimension" ". bottom-dimension .";
+  -ms-grid-rows: calc(13px + 10px) auto calc(13px + 10px);
+      grid-template-rows: calc(13px + 10px) auto calc(13px + 10px);
+      grid-template-areas: ". top-dimension ." "left-dimension pool-container right-dimension" ". bottom-dimension .";
+  width: 100%;
+}
+
+#diagram-container #overall-container #top-dimension {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: top-dimension;
+  height: 13px;
+  background-color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
 }
 
 #diagram-container #overall-container #left-dimension {
   width: 13px;
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: left-dimension;
   background-color: red;
@@ -108,7 +120,7 @@ body {
 }
 
 #diagram-container #overall-container #pool-container {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: pool-container;
   width: 100%;
@@ -170,7 +182,7 @@ body {
 }
 
 #diagram-container #overall-container #right-dimension {
-  -ms-grid-row: 1;
+  -ms-grid-row: 2;
   -ms-grid-column: 3;
   grid-area: right-dimension;
   height: 100%;
@@ -185,7 +197,7 @@ body {
 }
 
 #diagram-container #overall-container #bottom-dimension {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 2;
   grid-area: bottom-dimension;
   width: 100%;
