@@ -56,23 +56,26 @@ const render = () => {
   // set step length and width
   sideStep.style.width = `${stepLength * scaleFactor}`;
   sideStep.style.height = `${stepWidth * scaleFactor}`;
-  // set visibility of side step
+  // set visibility of side step and height of dimension blocks
+
   if (sideStepVisibility === "no") {
     sideStep.style.display = "none";
+    rightDimension.style.height = `${poolWidth * scaleFactor}px`;
+    leftDimension.style.height = `${poolWidth * scaleFactor}px`;
   } else if (sideStepVisibility === "yes") {
     sideStep.style.display = "block";
   }
   // set sidestep orientation and dimensions height
-  if (sideStepOrientation === "right") {
+  if (sideStepOrientation === "right" && sideStepVisibility === "yes") {
     sideStep.style.alignSelf = "flex-end";
     leftDimension.style.height = `${poolWidth * scaleFactor}px`;
-    console.log(poolWidth);
+    console.log(typeof stepWidth);
     rightDimension.style.height = `${(poolWidth + stepWidth) * scaleFactor}px`;
-  } else if (sideStepOrientation === "left") {
+  } else if (sideStepOrientation === "left" && sideStepVisibility === "yes") {
     sideStep.style.alignSelf = "flex-start";
     rightDimension.style.height = `${poolWidth * scaleFactor}px`;
     leftDimension.style.height = `${(poolWidth + stepWidth) * scaleFactor}px`;
-  } else if (sideStepOrientation === "centre") {
+  } else if (sideStepOrientation === "centre" && sideStepVisibility === "yes") {
     sideStep.style.alignSelf = "center";
     rightDimension.style.height = `${poolWidth * scaleFactor}px`;
     leftDimension.style.height = `${poolWidth * scaleFactor}px`;
@@ -95,18 +98,14 @@ const render = () => {
   roller.innerHTML = "";
   roller.appendChild(rollerSvg);
   // set height of roller
-  if (
-    (rollerVisibility === "right" && sideStepOrientation !== "right") ||
-    (rollerVisibility === "left" && sideStepOrientation !== "left")
-  ) {
-    roller.style.height = `${(parseInt(poolWidth) + 0.3) * scaleFactor}px`;
-  } else if (
-    (rollerVisibility === "right" && sideStepOrientation === "right") ||
-    (rollerVisibility === "left" && sideStepOrientation === "left")
-  ) {
-    roller.style.height = `${
-      (parseInt(poolWidth) + parseInt(stepWidth) + 0.3) * scaleFactor
-    }px`;
+  roller.style.height = `${(poolWidth + 0.3) * scaleFactor}px`;
+  if (sideStepVisibility === "yes") {
+    if (
+      (rollerVisibility === "right" && sideStepOrientation === "right") ||
+      (rollerVisibility === "left" && sideStepOrientation === "left")
+    ) {
+      roller.style.height = `${(poolWidth + stepWidth + 0.3) * scaleFactor}px`;
+    }
   }
   // add margin to roller
   if (rollerVisibility === "right") {
@@ -126,19 +125,19 @@ sideStepVisibilitySelector.addEventListener("change", (event) => {
   render();
 });
 poolLengthSelector.addEventListener("change", (event) => {
-  poolLength = event.target.value;
+  poolLength = parseInt(event.target.value);
   render();
 });
 poolWidthSelector.addEventListener("change", (event) => {
-  poolWidth = event.target.value;
+  poolWidth = parseInt(event.target.value);
   render();
 });
 stepLengthSelector.addEventListener("change", (event) => {
-  stepLength = event.target.value;
+  stepLength = parseInt(event.target.value);
   render();
 });
 stepWidthSelector.addEventListener("change", (event) => {
-  stepWidth = event.target.value;
+  stepWidth = parseInt(event.target.value);
   render();
 });
 sideStepOrientationSelector.addEventListener("change", (event) => {
