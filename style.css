@@ -1,6 +1,7 @@
 :root {
   --roller-horizontal-distance: 50px;
   --dimension-block-offset: 10px;
+  --roller-vertical-extension: 10px;
 }
 
 *,
@@ -94,47 +95,6 @@ body {
   width: 100%;
 }
 
-#diagram-container #overall-container #top-dimension {
-  -ms-grid-row: 1;
-  -ms-grid-column: 2;
-  grid-area: top-dimension;
-  height: 13px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-shadow: 1px 0px #236c93, -1px 0px #236c93;
-          box-shadow: 1px 0px #236c93, -1px 0px #236c93;
-}
-
-#diagram-container #overall-container #left-dimension {
-  width: 13px;
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  grid-area: left-dimension;
-  -webkit-box-shadow: 0px 1px 0 0 #236c93, 0px -1px 0 0 #236c93;
-          box-shadow: 0px 1px 0 0 #236c93, 0px -1px 0 0 #236c93;
-  height: 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 #diagram-container #overall-container #pool-container {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
@@ -163,6 +123,13 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding-bottom: 2px;
+}
+
+#diagram-container #overall-container #pool-container #side-dimension .text-box {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 #diagram-container #overall-container #pool-container #border-container {
@@ -223,6 +190,53 @@ body {
   background: linear-gradient(120deg, #6dcdeb 0%, #7cc0eb 100%);
 }
 
+#diagram-container #overall-container #top-dimension {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: top-dimension;
+  height: 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 1px 0px #236c93, -1px 0px #236c93;
+          box-shadow: 1px 0px #236c93, -1px 0px #236c93;
+}
+
+#diagram-container #overall-container #left-dimension {
+  width: 13px;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: left-dimension;
+  -webkit-box-shadow: 0px 1px 0 0 #236c93, 0px -1px 0 0 #236c93;
+          box-shadow: 0px 1px 0 0 #236c93, 0px -1px 0 0 #236c93;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#diagram-container #overall-container #left-dimension .text-box {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-right: calc( 2px * -1);
+}
+
 #diagram-container #overall-container #right-dimension {
   -ms-grid-row: 2;
   -ms-grid-column: 3;
@@ -246,6 +260,12 @@ body {
           align-items: center;
 }
 
+#diagram-container #overall-container #right-dimension .text-box {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-left: calc( (10px - 8px) * -1);
+}
+
 #diagram-container #overall-container #bottom-dimension {
   -ms-grid-row: 3;
   -ms-grid-column: 2;
@@ -265,16 +285,30 @@ body {
 }
 
 #diagram-container #roller {
-  margin-bottom: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: calc( 23px - 10px);
 }
 
-#diagram-container #roller #rod {
+#diagram-container #roller #roller-svg #rod {
   height: calc(100% - 18px);
 }
 
-#diagram-container #roller #end2 {
+#diagram-container #roller #roller-svg #end2 {
   -webkit-transform: translateY(calc(100% - 8px));
           transform: translateY(calc(100% - 8px));
+}
+
+#diagram-container #roller #roller-text-box p {
+  text-align: center;
+  line-height: 1;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
 }
 
 .arrow1 {
@@ -299,16 +333,66 @@ body {
 
 .lineVertical {
   border-left: 1px solid #236c93;
-  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   width: 1px;
   background-color: #236c93;
   margin: 1px 0 1px 0;
 }
 
 .lineHorizontal {
-  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   height: 1px;
   background-color: #236c93;
   margin: 0 1px 0 1px;
+}
+
+.text-box {
+  display: block;
+}
+
+.blue-dimension-horizontal {
+  -webkit-box-shadow: 1px 0px #498096, -1px 0px #498096 !important;
+          box-shadow: 1px 0px #498096, -1px 0px #498096 !important;
+}
+
+.blue-dimension-horizontal svg {
+  fill: #4191ba;
+}
+
+.blue-dimension-horizontal .lineHorizontal {
+  background-color: #4191ba;
+}
+
+.blue-dimension-horizontal .text-box {
+  color: #498096;
+}
+
+.blue-dimension-vertical {
+  -webkit-box-shadow: 0px 1px #498096, 0px -1px #498096 !important;
+          box-shadow: 0px 1px #498096, 0px -1px #498096 !important;
+}
+
+.blue-dimension-vertical svg {
+  fill: #4191ba;
+}
+
+.blue-dimension-vertical .lineHorizontal {
+  background-color: #4191ba;
+}
+
+.blue-dimension-vertical .text-box {
+  color: #498096;
+}
+
+.roller-left-margin {
+  margin-left: calc( 50px - 23px);
+}
+
+.roller-right-margin {
+  margin-right: calc( 50px - 23px);
 }
 /*# sourceMappingURL=style.css.map */

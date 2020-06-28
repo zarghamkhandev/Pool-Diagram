@@ -3,14 +3,21 @@ $border-color: #5196bb;
 $border-width: 2px;
 $pool-color: linear-gradient(120deg, #6dcdeb 0%, #7cc0eb 100%);
 $roller-horizontal-distance: 50px;
+$roller-vertical-extension: 10px;
+$roller-text-extension: 23px;
 $dimension-block-width: 13px;
 $dimension-block-offset: 10px;
 $dimension-lines-color: #236c93;
 $arrow-color: #ff6400;
+$dimension-text-spacing-left: 8px;
+$dimension-text-spacing-right: 8px;
+$horizontal-breakpoint: 20px;
+$vertical-breakpoint: 20px;
 
 :root {
   --roller-horizontal-distance: #{$roller-horizontal-distance};
   --dimension-block-offset: #{$dimension-block-offset};
+  --roller-vertical-extension: #{$roller-vertical-extension};
 }
 *,
 ::before,
@@ -75,27 +82,6 @@ body {
       ". top-dimension ."
       "left-dimension pool-container right-dimension"
       ". bottom-dimension .";
-    #top-dimension {
-      grid-area: top-dimension;
-      height: $dimension-block-width;
-      display: flex;
-      width: 100%;
-      align-items: center;
-      box-shadow: 1px 0px $dimension-lines-color,
-        -1px 0px $dimension-lines-color;
-    }
-    #left-dimension {
-      width: $dimension-block-width;
-      grid-area: left-dimension;
-      box-shadow: 0px 1px 0 0 $dimension-lines-color,
-        0px -1px 0 0 $dimension-lines-color;
-      height: 100px;
-      display: flex;
-      flex-direction: column;
-      align-self: flex-end;
-      justify-content: center;
-      align-items: center;
-    }
     width: 100%;
     #pool-container {
       grid-area: pool-container;
@@ -113,6 +99,11 @@ body {
         flex-direction: column;
         align-items: center;
         padding-bottom: 2px;
+        .text-box {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
       }
       #border-container {
         filter: drop-shadow(
@@ -158,6 +149,33 @@ body {
         }
       }
     }
+    #top-dimension {
+      grid-area: top-dimension;
+      height: $dimension-block-width;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      box-shadow: 1px 0px $dimension-lines-color,
+        -1px 0px $dimension-lines-color;
+    }
+    #left-dimension {
+      width: $dimension-block-width;
+      grid-area: left-dimension;
+      box-shadow: 0px 1px 0 0 $dimension-lines-color,
+        0px -1px 0 0 $dimension-lines-color;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      align-self: flex-end;
+      justify-content: center;
+      align-items: center;
+      .text-box {
+        align-self: flex-end;
+        margin-right: calc(
+          #{$dimension-block-offset - $dimension-text-spacing-left} * -1
+        );
+      }
+    }
     #right-dimension {
       grid-area: right-dimension;
       height: 100%;
@@ -168,6 +186,12 @@ body {
       align-self: flex-end;
       flex-direction: column;
       align-items: center;
+      .text-box {
+        align-self: flex-start;
+        margin-left: calc(
+          (#{$dimension-block-offset} - #{$dimension-text-spacing-right}) * -1
+        );
+      }
     }
     #bottom-dimension {
       grid-area: bottom-dimension;
@@ -182,12 +206,26 @@ body {
   }
 
   #roller {
-    margin-bottom: 14px;
-    #rod {
-      height: calc(100% - 18px);
+    display: flex;
+    align-items: center;
+
+    margin-bottom: calc(
+      #{$dimension-block-width+$dimension-block-offset} - #{$roller-vertical-extension}
+    );
+    #roller-svg {
+      #rod {
+        height: calc(100% - 18px);
+      }
+      #end2 {
+        transform: translateY(calc(100% - 8px));
+      }
     }
-    #end2 {
-      transform: translateY(calc(100% - 8px));
+    #roller-text-box {
+      p {
+        text-align: center;
+        line-height: 1;
+        width: min-content;
+      }
     }
   }
 }
@@ -209,15 +247,56 @@ body {
 }
 .lineVertical {
   border-left: 1px solid #{$dimension-lines-color};
-  height: 100%;
+  flex: 1;
   width: 1px;
   background-color: $dimension-lines-color;
   margin: 1px 0 1px 0;
 }
 
 .lineHorizontal {
-  width: 100%;
+  flex: 1;
   height: 1px;
   background-color: $dimension-lines-color;
   margin: 0 1px 0 1px;
+}
+
+.text-box {
+  display: block;
+}
+
+.blue-dimension-horizontal {
+  box-shadow: 1px 0px #498096, -1px 0px #498096 !important;
+  svg {
+    fill: #4191ba;
+  }
+  .lineHorizontal {
+    background-color: #4191ba;
+  }
+  .text-box {
+    color: #498096;
+  }
+}
+
+.blue-dimension-vertical {
+  box-shadow: 0px 1px #498096, 0px -1px #498096 !important;
+  svg {
+    fill: #4191ba;
+  }
+  .lineHorizontal {
+    background-color: #4191ba;
+  }
+  .text-box {
+    color: #498096;
+  }
+}
+
+.roller-left-margin {
+  margin-left: calc(
+    #{$roller-horizontal-distance} - #{$dimension-block-width + $dimension-block-offset}
+  );
+}
+.roller-right-margin {
+  margin-right: calc(
+    #{$roller-horizontal-distance} - #{$dimension-block-width + $dimension-block-offset}
+  );
 }
