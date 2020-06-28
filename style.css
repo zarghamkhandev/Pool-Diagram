@@ -81,7 +81,6 @@ body {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  background: yellow;
 }
 
 #diagram-container #overall-container {
