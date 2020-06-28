@@ -2,13 +2,15 @@ $pool-container: 400px;
 $border-color: #5196bb;
 $border-width: 2px;
 $pool-color: linear-gradient(120deg, #6dcdeb 0%, #7cc0eb 100%);
-$lines-color: #236c93;
 $roller-horizontal-distance: 50px;
 $dimension-block-width: 13px;
-$diemsnion-block-offset: 10px;
+$dimension-block-offset: 10px;
+$dimension-lines-color: #236c93;
+$arrow-color: #ff6400;
 
 :root {
   --roller-horizontal-distance: #{$roller-horizontal-distance};
+  --dimension-block-offset: #{$dimension-block-offset};
 }
 *,
 ::before,
@@ -64,11 +66,11 @@ body {
   #overall-container {
     display: grid;
     grid-template-columns:
-      calc(#{$dimension-block-width} + #{$diemsnion-block-offset})
-      auto calc(#{$dimension-block-width} + #{$diemsnion-block-offset});
+      calc(#{$dimension-block-width} + #{$dimension-block-offset})
+      auto calc(#{$dimension-block-width} + #{$dimension-block-offset});
     grid-template-rows:
-      calc(#{$dimension-block-width} + #{$diemsnion-block-offset})
-      auto calc(#{$dimension-block-width} + #{$diemsnion-block-offset});
+      calc(#{$dimension-block-width} + #{$dimension-block-offset})
+      auto calc(#{$dimension-block-width} + #{$dimension-block-offset});
     grid-template-areas:
       ". top-dimension ."
       "left-dimension pool-container right-dimension"
@@ -83,54 +85,85 @@ body {
     #left-dimension {
       width: $dimension-block-width;
       grid-area: left-dimension;
-      background-color: red;
+      box-shadow: 0px 1px 0 0 $dimension-lines-color,
+        0px -1px 0 0 $dimension-lines-color;
       height: 100px;
       display: flex;
+      flex-direction: column;
       align-self: flex-end;
+      justify-content: center;
+      align-items: center;
+      .arrow1 {
+        margin-top: 1px;
+        fill: $arrow-color;
+      }
+      #line {
+        border-left: 1px solid #{$dimension-lines-color};
+        height: 100%;
+        width: 1px;
+        background-color: $dimension-lines-color;
+        margin: 1px 0 1px 0;
+      }
+      .arrow2 {
+        margin-bottom: 1px;
+        fill: $arrow-color;
+      }
     }
     width: 100%;
     #pool-container {
       grid-area: pool-container;
       width: 100%;
-      filter: drop-shadow(
-          0px calc(#{$border-width} * (-1)) 0px #{$border-color}
-        )
-        drop-shadow(0px $border-width 0px $border-color)
-        drop-shadow(calc(#{$border-width} * (-1)) 0px 0px $border-color)
-        drop-shadow($border-width 0px 0px $border-color);
-      #extra-container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        filter: url("#goo");
-        position: relative;
-        #main-pool {
+      position: relative;
+      #side-dimension {
+        height: 0px;
+        width: $dimension-block-width;
+        background-color: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: $dimension-block-offset;
+      }
+      #border-container {
+        filter: drop-shadow(
+            0px calc(#{$border-width} * (-1)) 0px #{$border-color}
+          )
+          drop-shadow(0px $border-width 0px $border-color)
+          drop-shadow(calc(#{$border-width} * (-1)) 0px 0px $border-color)
+          drop-shadow($border-width 0px 0px $border-color);
+        #extra-container {
           width: 100%;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          p {
-            color: $border-color;
-            position: relative;
-            font-weight: bold;
-            font-size: 18;
+          flex-direction: column;
+          filter: url("#goo");
+          position: relative;
+          #main-pool {
             width: 100%;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            p {
+              color: $border-color;
+              position: relative;
+              font-weight: bold;
+              font-size: 18;
+              width: 100%;
+              text-align: center;
+            }
           }
-        }
-        #side-step,
-        #main-pool {
-          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
-        #side-step::before,
-        #main-pool::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: $pool-color;
+          #side-step,
+          #main-pool {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          }
+          #side-step::before,
+          #main-pool::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: $pool-color;
+          }
         }
       }
     }
@@ -147,8 +180,25 @@ body {
       grid-area: bottom-dimension;
       width: 100%;
       height: $dimension-block-width;
-      margin-top: auto;
-      background-color: blue;
+      display: flex;
+      align-self: flex-end;
+      align-items: center;
+      box-shadow: 1px 0px $dimension-lines-color,
+        -1px 0px $dimension-lines-color;
+      .arrow1 {
+        margin-left: 1px;
+        fill: $arrow-color;
+      }
+      #line {
+        width: 100%;
+        height: 1px;
+        background-color: $dimension-lines-color;
+        margin: 0 1px 0 1px;
+      }
+      .arrow2 {
+        margin-right: 1px;
+        fill: $arrow-color;
+      }
     }
   }
 
@@ -158,7 +208,7 @@ body {
       height: calc(100% - 18px);
     }
     #end2 {
-      y: calc(100% - 8px);
+      transform: translateY(calc(100% - 8px));
     }
   }
 }

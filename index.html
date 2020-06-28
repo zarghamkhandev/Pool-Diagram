@@ -87,12 +87,41 @@
       <div id="diagram-container">
         <div id="overall-container">
           <div id="top-dimension"></div>
-          <div id="left-dimension"></div>
+          <div id="left-dimension">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 45.12 53.52"
+              width="10"
+              class="arrow1"
+            >
+              <polygon
+                points="45.12 53.52 22.8 0 0 53.52 45.12 53.52"
+                fill="#FF6400"
+              />
+            </svg>
+            <div id="line"></div>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 45.12 53.52"
+              width="10"
+              class="arrow2"
+            >
+              <g id="Layer_2" data-name="Layer 2">
+                <g id="Layer_1-2" data-name="Layer 1">
+                  <polygon points="0 0 22.32 53.52 45.12 0 0 0" />
+                </g>
+              </g>
+            </svg>
+          </div>
           <div id="pool-container">
-            <div id="extra-container">
-              <div id="side-step"></div>
-              <div id="main-pool">
-                <p>Pool Cover <br />to be Delivered</p>
+            <div id="side-dimension"></div>
+            <div id="border-container">
+              <div id="extra-container">
+                <div id="side-step"></div>
+                <div id="main-pool">
+                  <p>Pool Cover <br />to be Delivered</p>
+                </div>
               </div>
             </div>
             <svg
@@ -106,7 +135,7 @@
                 <filter id="goo">
                   <feGaussianBlur
                     in="SourceGraphic"
-                    stdDeviation="2"
+                    stdDeviation="1"
                     result="blur"
                   />
                   <feColorMatrix
@@ -121,7 +150,34 @@
             </svg>
           </div>
           <div id="right-dimension"></div>
-          <div id="bottom-dimension"></div>
+          <div id="bottom-dimension">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 53.52 45.12"
+              height="9.75"
+              class="arrow1"
+            >
+              <g id="Layer_2" data-name="Layer 2">
+                <g id="Layer_1-2" data-name="Layer 1">
+                  <polygon points="53.52 0 0 22.32 53.52 45.12 53.52 0" />
+                </g>
+              </g>
+            </svg>
+            <div id="line"></div>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 53.52 45.12"
+              height="9.75"
+              class="arrow2"
+            >
+              <g id="Layer_2" data-name="Layer 2">
+                <g id="Layer_1-2" data-name="Layer 1">
+                  <polygon points="0 45.12 53.52 22.8 0 0 0 45.12" />
+                </g>
+              </g>
+            </svg>
+          </div>
         </div>
 
         <div id="roller">
@@ -142,6 +198,7 @@
               id="end1"
               rx="4"
             />
+
             <rect width="12" fill="url(#Gradient1" id="rod" x="13" y="9" />
             <rect width="36" height="8" fill="#5a95b4" x="0" id="end2" rx="4" />
           </svg>

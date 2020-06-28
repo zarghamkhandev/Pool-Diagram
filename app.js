@@ -36,7 +36,12 @@ const leftDimension = document.getElementById("left-dimension");
 const rightDimension = document.getElementById("right-dimension");
 // select top dimension
 const topDimension = document.getElementById("top-dimension");
-//
+// select side step vertical dimension
+const sideStepVerticalDimension = document.getElementById("side-dimension");
+//select side-step vertial dimension margin value
+const sideStepMargin = getComputedStyle(document.body).getPropertyValue(
+  "--dimension-block-offset"
+);
 // get default values from selectors
 const defaultValue = (selector) =>
   selector.options[selector.selectedIndex].value;
@@ -64,9 +69,11 @@ const render = () => {
     sideStep.style.display = "none";
     rightDimension.style.height = `${poolWidth * scaleFactor}px`;
     leftDimension.style.height = `${poolWidth * scaleFactor}px`;
+    topDimension.style.width = "100%";
   } else if (sideStepVisibility === "yes") {
     sideStep.style.display = "block";
     topDimension.style.width = `${stepLength * scaleFactor}px`;
+    sideStepVerticalDimension.style.height = `${stepWidth * scaleFactor}px`;
   }
   // set sidestep orientation and dimensions
   if (sideStepOrientation === "right" && sideStepVisibility === "yes") {
@@ -74,16 +81,28 @@ const render = () => {
     leftDimension.style.height = `${poolWidth * scaleFactor}px`;
     rightDimension.style.height = `${(poolWidth + stepWidth) * scaleFactor}px`;
     topDimension.style.justifySelf = "flex-end";
+    sideStepVerticalDimension.style.marginLeft = "0px";
+    sideStepVerticalDimension.style.marginRight = `${sideStepMargin}`;
+    sideStepVerticalDimension.style.left = `auto`;
+    sideStepVerticalDimension.style.right = `${stepLength * scaleFactor}px`;
   } else if (sideStepOrientation === "left" && sideStepVisibility === "yes") {
     sideStep.style.alignSelf = "flex-start";
     rightDimension.style.height = `${poolWidth * scaleFactor}px`;
     leftDimension.style.height = `${(poolWidth + stepWidth) * scaleFactor}px`;
     topDimension.style.justifySelf = "flex-start";
+    sideStepVerticalDimension.style.marginRight = "0px";
+    sideStepVerticalDimension.style.marginLeft = `${sideStepMargin}`;
+    sideStepVerticalDimension.style.left = `${stepLength * scaleFactor}px`;
   } else if (sideStepOrientation === "centre" && sideStepVisibility === "yes") {
     sideStep.style.alignSelf = "center";
     rightDimension.style.height = `${poolWidth * scaleFactor}px`;
     leftDimension.style.height = `${poolWidth * scaleFactor}px`;
     topDimension.style.justifySelf = "center";
+    sideStepVerticalDimension.style.marginRight = "0px";
+    sideStepVerticalDimension.style.marginLeft = `${sideStepMargin}`;
+    sideStepVerticalDimension.style.left = `calc(50% + ${
+      (stepLength * scaleFactor) / 2
+    }px)`;
   }
   // set roller needed value
   if (rollerNeeded === "yes") {
