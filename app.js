@@ -38,10 +38,10 @@ const rightDimension = document.getElementById("right-dimension");
 // get default values from selectors
 const defaultValue = (selector) =>
   selector.options[selector.selectedIndex].value;
-let poolLength = defaultValue(poolLengthSelector);
-let poolWidth = defaultValue(poolWidthSelector);
-let stepLength = defaultValue(stepLengthSelector);
-let stepWidth = defaultValue(stepWidthSelector);
+let poolLength = parseInt(defaultValue(poolLengthSelector));
+let poolWidth = parseInt(defaultValue(poolWidthSelector));
+let stepLength = parseInt(defaultValue(stepLengthSelector));
+let stepWidth = parseInt(defaultValue(stepWidthSelector));
 let sideStepVisibility = defaultValue(sideStepVisibilitySelector);
 let sideStepOrientation = defaultValue(sideStepOrientationSelector);
 let rollerNeeded = defaultValue(rollerNeededSelector);
@@ -65,11 +65,17 @@ const render = () => {
   // set sidestep orientation and dimensions height
   if (sideStepOrientation === "right") {
     sideStep.style.alignSelf = "flex-end";
-    console.log(leftDimension.clientHeight);
+    leftDimension.style.height = `${poolWidth * scaleFactor}px`;
+    console.log(poolWidth);
+    rightDimension.style.height = `${(poolWidth + stepWidth) * scaleFactor}px`;
   } else if (sideStepOrientation === "left") {
     sideStep.style.alignSelf = "flex-start";
+    rightDimension.style.height = `${poolWidth * scaleFactor}px`;
+    leftDimension.style.height = `${(poolWidth + stepWidth) * scaleFactor}px`;
   } else if (sideStepOrientation === "centre") {
     sideStep.style.alignSelf = "center";
+    rightDimension.style.height = `${poolWidth * scaleFactor}px`;
+    leftDimension.style.height = `${poolWidth * scaleFactor}px`;
   }
   // set roller needed value
   if (rollerNeeded === "yes") {

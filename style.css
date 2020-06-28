@@ -99,6 +99,12 @@ body {
   -ms-grid-column: 1;
   grid-area: left-dimension;
   background-color: red;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 #diagram-container #overall-container #pool-container {
@@ -171,6 +177,11 @@ body {
   width: 13px;
   margin-left: auto;
   background-color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 #diagram-container #overall-container #bottom-dimension {
