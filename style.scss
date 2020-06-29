@@ -11,13 +11,16 @@ $dimension-lines-color: #236c93;
 $arrow-color: #ff6400;
 $dimension-text-spacing-left: 8px;
 $dimension-text-spacing-right: 8px;
-$horizontal-breakpoint: 20px;
-$vertical-breakpoint: 20px;
+$horizontal-breakpoint: 50px;
+$vertical-breakpoint: 30px;
 
 :root {
   --roller-horizontal-distance: #{$roller-horizontal-distance};
   --dimension-block-offset: #{$dimension-block-offset};
+  --dimension-block-width: #{$dimension-block-width};
   --roller-vertical-extension: #{$roller-vertical-extension};
+  --horizontal-breakpoint: #{$horizontal-breakpoint};
+  --vertical-breakpoint: #{$vertical-breakpoint};
 }
 *,
 ::before,
@@ -93,7 +96,6 @@ body {
         position: absolute;
         top: 0;
         left: 0;
-        margin-left: $dimension-block-offset;
         box-shadow: 0 -1px $dimension-lines-color;
         display: flex;
         flex-direction: column;
@@ -102,7 +104,35 @@ body {
         .text-box {
           position: absolute;
           top: 50%;
+          left: 0;
           transform: translateY(-50%);
+        }
+      }
+      #side-dimension-alt {
+        width: 20;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .text-box {
+          top: 0;
+          left: 0;
+          position: absolute;
+          p {
+            line-height: 0.5;
+          }
+        }
+      }
+      #side-dimension-horizontal {
+        align-items: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-shadow: 1px 0px $dimension-lines-color;
+        .text-box {
+          position: absolute;
+          left: 50%;
+          top: -15;
+          transform: translateX(-50%);
         }
       }
       #border-container {
@@ -271,6 +301,7 @@ body {
   }
   .text-box {
     color: #498096;
+    left: 30;
   }
 }
 
@@ -296,4 +327,30 @@ body {
   margin-right: calc(
     #{$roller-horizontal-distance} - #{$dimension-block-width + $dimension-block-offset}
   );
+}
+
+.left-border {
+  border-color: $dimension-lines-color;
+  border-style: solid;
+  border-width: 1px 0px 0px 1px;
+}
+
+.right-border {
+  border-color: $dimension-lines-color;
+  border-style: solid;
+  border-width: 1px 1px 0px 0px;
+}
+
+.hide-dimension-content {
+  box-shadow: 0px 0px $dimension-lines-color !important;
+  .lineHorizontal {
+    display: none;
+  }
+  svg {
+    display: none;
+  }
+  .text-box {
+    left: 110% !important;
+    top: -20 !important;
+  }
 }

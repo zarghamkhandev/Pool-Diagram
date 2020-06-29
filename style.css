@@ -1,7 +1,10 @@
 :root {
   --roller-horizontal-distance: 50px;
   --dimension-block-offset: 10px;
+  --dimension-block-width: 13px;
   --roller-vertical-extension: 10px;
+  --horizontal-breakpoint: 50px;
+  --vertical-breakpoint: 30px;
 }
 
 *,
@@ -108,7 +111,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  margin-left: 10px;
   -webkit-box-shadow: 0 -1px #236c93;
           box-shadow: 0 -1px #236c93;
   display: -webkit-box;
@@ -127,8 +129,45 @@ body {
 #diagram-container #overall-container #pool-container #side-dimension .text-box {
   position: absolute;
   top: 50%;
+  left: 0;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+}
+
+#diagram-container #overall-container #pool-container #side-dimension-alt {
+  width: 20;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#diagram-container #overall-container #pool-container #side-dimension-alt .text-box {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+#diagram-container #overall-container #pool-container #side-dimension-alt .text-box p {
+  line-height: 0.5;
+}
+
+#diagram-container #overall-container #pool-container #side-dimension-horizontal {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-box-shadow: 1px 0px #236c93;
+          box-shadow: 1px 0px #236c93;
+}
+
+#diagram-container #overall-container #pool-container #side-dimension-horizontal .text-box {
+  position: absolute;
+  left: 50%;
+  top: -15;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 #diagram-container #overall-container #pool-container #border-container {
@@ -365,6 +404,7 @@ body {
 
 .blue-dimension-horizontal .text-box {
   color: #498096;
+  left: 30;
 }
 
 .blue-dimension-vertical {
@@ -390,5 +430,35 @@ body {
 
 .roller-right-margin {
   margin-right: calc( 50px - 23px);
+}
+
+.left-border {
+  border-color: #236c93;
+  border-style: solid;
+  border-width: 1px 0px 0px 1px;
+}
+
+.right-border {
+  border-color: #236c93;
+  border-style: solid;
+  border-width: 1px 1px 0px 0px;
+}
+
+.hide-dimension-content {
+  -webkit-box-shadow: 0px 0px #236c93 !important;
+          box-shadow: 0px 0px #236c93 !important;
+}
+
+.hide-dimension-content .lineHorizontal {
+  display: none;
+}
+
+.hide-dimension-content svg {
+  display: none;
+}
+
+.hide-dimension-content .text-box {
+  left: 110% !important;
+  top: -20 !important;
 }
 /*# sourceMappingURL=style.css.map */
